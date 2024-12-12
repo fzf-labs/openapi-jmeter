@@ -1,0 +1,80 @@
+jmeter:
+  openapiVersion: 2.0  # 2.0 表示 OpenAPI 2.0，3.0 表示 OpenAPI 3.0
+  inputPath: "./example"  # OpenAPI 文件路径
+  outputPath: "./example" # JMeter 输出文件路径
+  keyword: ""  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
+# Jmeter 基础配置
+# HTTP 请求配置
+httpRequest:
+  protocol: "http"  # http, https
+  serverNameOrIp: "localhost" # 服务器名称或IP
+  portNumber: "8080" # 端口号
+  redirectAutomatically: false # 自动重定向
+  followRedirects: true # 跟随重定向
+  useKeepAlive: false # 使用保持连接
+  useMultipartFormData: false # 使用多部分表单数据
+  browserCompatibleHeaders: false # 浏览器兼容头
+  httpDefaultHeaders: # HTTP 默认请求头
+    - key: "Content-Type"
+      value: "application/json"
+    - key: "Accept"
+      value: "application/json"
+    - key: "User-Agent" 
+      value: "JMeter"
+# 线程组配置
+threadGroup:
+  actionToBeTakenAfterASamplerError: "continue"  # continue, startnextloop, stopthread, stoptest
+  numThreads: 10                                 # 线程数量
+  rampTime: 30                                   # 线程启动时间(秒)
+  loopCount: -1                                  # -1 表示永远循环
+  sameUserOnEachIteration: false                 # 每次迭代使用相同用户
+  delayThreadCreationUntilNeeded: false          # 延迟线程创建直到需要
+  specifyThreadLifetime: true                    # 指定线程生命周期
+  duration: 300                                  # 持续时间(秒)
+  startupDelay: 0                                # 启动延迟(秒)
+# CSV 数据集配置
+csvDataSetConfig:
+  fileNamePath: "./example" # CSV 文件路径
+  fileEncoding: "UTF-8" # 文件编码格式
+  variableNames: "username,password,email" # 变量名列表
+  ignoreFirstLine: true # 是否忽略第一行
+  delimiter: "," # 分隔符
+  allowQuotedData: true # 是否允许带引号的数据
+  recycle: true # 是否循环使用数据
+  stopThread: false # 数据用完时是否停止线程
+  shareMode: "shareMode.all"  # shareMode.all, shareMode.group, shareMode.thread
+# 后端监听器配置
+backendListener:
+  backendListenerImplementation: "org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient" # 后端监听器实现
+  asyncQueueSize: 5000 # 异步队列大小 
+  # Graphite 配置
+  graphite:
+    graphiteMetricsSender: "org.apache.jmeter.visualizers.backend.graphite.TextGraphiteMetricsSender" # 图表配置  
+    graphiteHost: "localhost" # 图表主机
+    graphitePort: "2003" # 图表端口
+    rootMetricsPrefix: "jmeter." # 根度量前缀
+    summaryOnly: false # 仅总结
+    samplersList: ".*" # 采样器列表
+    useRegexpForSamplersList: true # 使用正则表达式
+    percentiles: "90;95;99" # 百分位数
+  # InfluxDB Raw 配置
+  influxdbRaw:
+    influxdbMetricsSender: "org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender" # InfluxDB 配置
+    influxdbUrl: "http://localhost:8086/write?db=jmeter" # InfluxDB URL
+    influxdbToken: "your-token-here" # InfluxDB 令牌
+    measurement: "jmeter" # 度量
+  # InfluxDB 配置
+  influxdb:
+    influxdbMetricsSender: "org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender" # InfluxDB 配置
+    influxdbUrl: "http://localhost:8086/api/v2/write" # InfluxDB URL
+    application: "MyTestApp" # 应用
+    measurement: "jmeter" # 度量
+    summaryOnly: "false" # 仅总结
+    samplersRegex: ".*" # 采样器正则
+    percentiles: "90;95;99" # 百分位数
+    testTitle: "API Performance Test" # 测试标题
+    eventTags: "" # 事件标签
+# 查看结果树配置
+viewResultsTree:
+  fileNamePath: "./example" # 文件路径
+  logDisplayOnly: "false" # 仅显示日志  
