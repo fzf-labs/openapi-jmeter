@@ -1,0 +1,3200 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "devices/v1/devices.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Devices"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/devices-management/api/after-sale/maintenance/detail": {
+      "get": {
+        "summary": "C端调用-售后维修记录详情",
+        "operationId": "Devices_DeviceMaintenanceInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeviceMaintenanceInfoResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/after-sale/maintenance/wechat/list": {
+      "get": {
+        "summary": "C端调用-售后维修记录列表",
+        "operationId": "Devices_DeviceMaintenanceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeviceMaintenanceListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "phone",
+            "description": "手机号",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sn",
+            "description": "设备SN",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/IIUG/batch-init/v2": {
+      "post": {
+        "summary": "C端调用-批量设备激活（签名校验）",
+        "operationId": "Devices_DevicesIIUGBatchInitV2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGBatchInitV2Reply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGBatchInitV2Request"
+            }
+          },
+          {
+            "name": "appkey",
+            "description": "Appkey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorizationdate",
+            "description": "Authorizationdate",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/IIUG/init": {
+      "post": {
+        "summary": "C端调用-单设备激活",
+        "operationId": "Devices_DevicesIIUGInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGInitReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGInitGRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deviceBrand",
+            "description": "设备品牌",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "modelDevice",
+            "description": "设备型号",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/IIUG/init/v2": {
+      "post": {
+        "summary": "C端调用-单设备激活V2",
+        "operationId": "Devices_DevicesIIUGInitV2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGInitV2Reply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DevicesIIUGInitV2Request"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deviceBrand",
+            "description": "设备品牌",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "modelDevice",
+            "description": "设备型号",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/checkIsYcDevice": {
+      "post": {
+        "summary": "C端调用-查询是否为洋葱的设备（签名校验）",
+        "operationId": "Devices_CheckIsYcDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CheckYcDeviceReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CheckYcDeviceReq"
+            }
+          },
+          {
+            "name": "appkey",
+            "description": "Appkey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorizationdate",
+            "description": "Authorizationdate",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/delete": {
+      "delete": {
+        "summary": "C端调用-设备清除",
+        "operationId": "Devices_DevicesDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesDeleteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "operator",
+            "description": "操作人",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "operateTime",
+            "description": "退货时间",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "reason",
+            "description": "退货原因",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/delete/v2": {
+      "delete": {
+        "summary": "C端调用-退货接口（签名校验）",
+        "operationId": "Devices_DevicesDeleteV2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesDeleteV2Reply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "operator",
+            "description": "操作人",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "operateTime",
+            "description": "退货时间",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "reason",
+            "description": "退货原因",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "description": "Appkey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorizationdate",
+            "description": "Authorizationdate",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/heartbeat": {
+      "post": {
+        "summary": "C端调用-设备心跳信息上报(压测)",
+        "operationId": "Devices_DevicesHeartbeat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesHeartbeatReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DevicesHeartbeatRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/info": {
+      "get": {
+        "summary": "C端调用-获取设备信息",
+        "operationId": "Devices_GetDevicesInfoApi",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesInfoApiReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "description": "设备SNId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/location": {
+      "post": {
+        "summary": "C端调用-设备定位信息上报",
+        "operationId": "Devices_UpdateDevicesLocation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesLocationReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesLocationRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/ltVs/reportStatus": {
+      "get": {
+        "summary": "C端调用-查询设备位置信息和屏幕是否需要上报",
+        "operationId": "Devices_GetDevicesLtVsReportStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesLtVsReportStatusReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/queryModelDevice": {
+      "post": {
+        "summary": "C端调用-查询设备的型号（签名校验）",
+        "operationId": "Devices_QueryModelDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryModelDeviceReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1QueryModelDeviceReq"
+            }
+          },
+          {
+            "name": "appkey",
+            "description": "Appkey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorizationdate",
+            "description": "Authorizationdate",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/update/info": {
+      "put": {
+        "summary": "C端调用-设备使用信息上报(压测)",
+        "operationId": "Devices_UpdateDevices",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/api/devices/update/user": {
+      "put": {
+        "summary": "C端调用-上报设备绑定用户信息",
+        "operationId": "Devices_UpdateDevicesUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesUserReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesUserRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/createHangZhiUnManagedInfo": {
+      "post": {
+        "summary": "远程调用-创建航智解除管控设备信息",
+        "operationId": "Devices_CreateHangZhiUnManagedInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateHangZhiUnManagedInfoReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreateHangZhiUnManagedInfoReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/dashboard/controlversion": {
+      "get": {
+        "summary": "远程调用-获取当前设备管控版本分布",
+        "operationId": "Devices_GetControlVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetControlVersionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/dashboard/systemversion": {
+      "get": {
+        "summary": "远程调用-获取当前设备系统版本分布",
+        "operationId": "Devices_GetSystemVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetSystemVersionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/detail": {
+      "get": {
+        "summary": "远程调用-获取设备详情信息(压测)",
+        "operationId": "Devices_GetDevicesDetailInfoRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesDetailInfoRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "description": "设备SNId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/devices_activate_number": {
+      "get": {
+        "summary": "远程调用-数据统计-设备激活数",
+        "operationId": "Devices_DevicesActivateNumberByTime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesActivateNumberByTimeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "startTime",
+            "description": "开始时间",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "description": "结束时间",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/devices_record_number": {
+      "get": {
+        "summary": "远程调用-数据统计-设备退货数",
+        "operationId": "Devices_DevicesRecordNumberByTime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesRecordNumberByTimeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "startTime",
+            "description": "开始时间",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "description": "结束时间",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/getDeviceInfoByOnionId": {
+      "get": {
+        "summary": "远程调用-通过洋葱ID获取设备信息",
+        "operationId": "Devices_GetDevicesInfoByOnionId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesInfoByOnionIdResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "onionId",
+            "description": "洋葱ID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/info": {
+      "get": {
+        "summary": "远程调用-获取设备信息(压测)",
+        "operationId": "Devices_GetDevicesInfoRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesInfoRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/list": {
+      "post": {
+        "summary": "远程调用-获取设备信息列表",
+        "operationId": "Devices_ListDevicesRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListDevicesRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ListDevicesRemoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/queryDeviceConfigInfo": {
+      "get": {
+        "summary": "远程调用-查询设备各型号配置信息 (售后使用，其他业务不要再用此接口)",
+        "operationId": "Devices_QueryDeviceConfigInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryDeviceConfigInfoReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/queryDeviceInfoByOnionId": {
+      "get": {
+        "summary": "远程调用-通过洋葱Id查询设备信息列表",
+        "operationId": "Devices_QueryDeviceInfoByOnionId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryDeviceInfoByOnionIdReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "onionId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/queryOrganizationDeviceNum": {
+      "post": {
+        "summary": "查询指定组织下的设备数量",
+        "operationId": "Devices_QueryOrganizationDeviceNum",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryOrganizationDeviceNumReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1QueryOrganizationDeviceNumReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/remote/devices/update/status": {
+      "put": {
+        "summary": "远程调用-更新设备状态",
+        "operationId": "Devices_UpdateDevicesStatusRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesStatusRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDevicesStatusRemoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/activation-organization/create": {
+      "post": {
+        "summary": "后台调用-创建设备激活组织信息",
+        "operationId": "Devices_CreateDeviceActivationOrganizationInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateDeviceActivationOrganizationInfoResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreateDeviceActivationOrganizationInfoReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/activation-organization/query": {
+      "get": {
+        "summary": "后台调用-查询设备激活组织信息",
+        "operationId": "Devices_QueryDeviceActivationOrganizationInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryDeviceActivationOrganizationInfoResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/activation-organization/update": {
+      "post": {
+        "summary": "后台调用-更新设备激活组织信息",
+        "operationId": "Devices_UpdateDeviceActivationOrganizationInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDeviceActivationOrganizationInfoResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDeviceActivationOrganizationInfoReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/change/organization": {
+      "put": {
+        "summary": "后台调用-切换设备组织",
+        "operationId": "Devices_DevicesChangeOrganizationShadow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DevicesChangeOrganizationShadowReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DevicesChangeOrganizationShadowRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/clearCacheAll": {
+      "get": {
+        "summary": "删除 Redis 缓存",
+        "operationId": "Devices_ClearCacheAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClearCacheAllReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "description": "缓存key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/createDevicesHangZhi": {
+      "post": {
+        "summary": "新增航智设备信息",
+        "operationId": "Devices_CreateDevicesHangZhi",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateDevicesHangZhiReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreateDevicesHangZhiReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/delete-record/query": {
+      "post": {
+        "summary": "后台调用-查询设备退货记录",
+        "operationId": "Devices_QueryDeviceDeleteRecord",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryDeviceDeleteRecordResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1QueryDeviceDeleteRecordReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/detail": {
+      "get": {
+        "summary": "后台调用-获取设备详情信息",
+        "operationId": "Devices_GetDevicesDetailInfoShadow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDevicesDetailInfoShadowReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "description": "设备SNId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/list": {
+      "post": {
+        "summary": "后台调用-获取设备信息列表",
+        "operationId": "Devices_ListDevicesShadow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListDevicesShadowReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ListDevicesShadowRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/model/conf/list": {
+      "get": {
+        "summary": "后台调用-获取设备型号配置列表",
+        "operationId": "Devices_GetDeviceModelConfList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceModelConfListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/queryHangZhiUnManagedInfoList": {
+      "post": {
+        "summary": "后台调用-查询航智解除管控设备信息列表",
+        "operationId": "Devices_QueryHangZhiUnManagedInfoList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1QueryHangZhiUnManagedInfoListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1QueryHangZhiUnManagedInfoListReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    },
+    "/devices-management/shadow/devices/updateHangZhiUnManagedInfoStatus": {
+      "post": {
+        "summary": "后台调用-更新航智解除管控设备信息的状态",
+        "operationId": "Devices_UpdateHangZhiUnManagedInfoStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateHangZhiUnManagedInfoStatusReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateHangZhiUnManagedInfoStatusReq"
+            }
+          }
+        ],
+        "tags": [
+          "Devices"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DeviceMaintenanceInfoRespDeviceMaintenanceInfoData": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "维修记录的信息"
+        },
+        "status": {
+          "type": "string",
+          "title": "维修记录的状态"
+        },
+        "expressNumber": {
+          "type": "string",
+          "title": "快递单号"
+        },
+        "time": {
+          "type": "string",
+          "title": "维修记录的时间"
+        },
+        "modelType": {
+          "type": "string",
+          "title": "维修记录的型号"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1CheckYcDeviceReply": {
+      "type": "object",
+      "properties": {
+        "isYcDevice": {
+          "type": "boolean",
+          "title": "是否为洋葱设备"
+        }
+      }
+    },
+    "v1CheckYcDeviceReq": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1ClearCacheAllReply": {
+      "type": "object"
+    },
+    "v1CreateDeviceActivationOrganizationInfoReq": {
+      "type": "object",
+      "properties": {
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        }
+      }
+    },
+    "v1CreateDeviceActivationOrganizationInfoResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "配置ID"
+        }
+      }
+    },
+    "v1CreateDevicesHangZhiReply": {
+      "type": "object",
+      "title": "新增航智设备信息-响应"
+    },
+    "v1CreateDevicesHangZhiReq": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "activeDate": {
+          "type": "string",
+          "title": "激活时间"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态"
+        }
+      },
+      "title": "新增航智设备信息-请求"
+    },
+    "v1CreateHangZhiUnManagedInfoReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        }
+      }
+    },
+    "v1CreateHangZhiUnManagedInfoReq": {
+      "type": "object",
+      "properties": {
+        "hangZhiId": {
+          "type": "string",
+          "title": "航智ID"
+        },
+        "openId": {
+          "type": "string",
+          "title": "openId"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1DetailInfo": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "modelCPU": {
+          "type": "string",
+          "title": "cpu"
+        },
+        "MAC": {
+          "type": "string",
+          "title": "MAC"
+        },
+        "versionControl": {
+          "type": "string",
+          "title": "管控版本"
+        },
+        "versionBrowser": {
+          "type": "string",
+          "title": "浏览器版本"
+        },
+        "versionSystem": {
+          "type": "string",
+          "title": "系统版本"
+        },
+        "versionAndroid": {
+          "type": "string",
+          "title": "安卓版本"
+        },
+        "RAMSize": {
+          "type": "number",
+          "format": "float",
+          "title": "内存"
+        },
+        "DDRSize": {
+          "type": "number",
+          "format": "float",
+          "title": "存储"
+        },
+        "DDRSizeUsed": {
+          "type": "number",
+          "format": "float",
+          "title": "已使用存储"
+        }
+      }
+    },
+    "v1DeviceActivationOrganizationInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        }
+      }
+    },
+    "v1DeviceConfigInfo": {
+      "type": "object",
+      "properties": {
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "hardWareConfigInfo": {
+          "$ref": "#/definitions/v1HardWareConfigInfo",
+          "title": "硬件配置信息"
+        },
+        "softWareConfigInfo": {
+          "$ref": "#/definitions/v1SoftWareConfigInfo",
+          "title": "软件配置信息"
+        }
+      }
+    },
+    "v1DeviceDeleteRecordItem": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "operator": {
+          "type": "string",
+          "title": "操作人"
+        },
+        "operateTime": {
+          "type": "string",
+          "title": "退货时间"
+        },
+        "reason": {
+          "type": "string",
+          "title": "退货原因"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        }
+      }
+    },
+    "v1DeviceInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户ID"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "sex": {
+          "type": "string",
+          "title": "性别"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "companyName": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "schoolName": {
+          "type": "string",
+          "title": "学校名称"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "className": {
+          "type": "string",
+          "title": "班级名称"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "modelDeviceDesc": {
+          "type": "string",
+          "title": "设备型号描述"
+        },
+        "timeLastHeartbeat": {
+          "type": "string",
+          "title": "最后一次心跳时间"
+        },
+        "statusActive": {
+          "type": "string",
+          "title": "激活状态"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "companyType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "企业类型"
+        },
+        "modelDeviceShow": {
+          "type": "string",
+          "title": "设备型号展示"
+        },
+        "modelDeviceImg": {
+          "type": "string",
+          "title": "设备型号图片"
+        }
+      }
+    },
+    "v1DeviceMaintenanceInfoResp": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "维修记录的名称"
+        },
+        "status": {
+          "type": "string",
+          "title": "维修记录的状态"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/DeviceMaintenanceInfoRespDeviceMaintenanceInfoData"
+          },
+          "title": "维修记录的信息"
+        },
+        "modelType": {
+          "type": "string",
+          "title": "维修记录的型号"
+        }
+      }
+    },
+    "v1DeviceMaintenanceListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "维修记录的 id."
+        },
+        "status": {
+          "type": "string",
+          "description": "维修记录的状态."
+        },
+        "name": {
+          "type": "string",
+          "description": "维修记录的名称."
+        },
+        "time": {
+          "type": "string",
+          "description": "最新的变更时间."
+        }
+      }
+    },
+    "v1DeviceMaintenanceListResp": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceMaintenanceListItem"
+          },
+          "title": "维修记录列表"
+        }
+      }
+    },
+    "v1DeviceModelInfo": {
+      "type": "object",
+      "properties": {
+        "modelDeviceShow": {
+          "type": "string",
+          "title": "设备型号展示"
+        },
+        "modelDeviceImg": {
+          "type": "string",
+          "title": "设备型号图片"
+        },
+        "deviceModelName": {
+          "type": "string",
+          "title": "设备名称"
+        }
+      }
+    },
+    "v1DevicesActivateNumberByTimeReply": {
+      "type": "object",
+      "properties": {
+        "num": {
+          "type": "integer",
+          "format": "int32",
+          "title": "数量"
+        },
+        "modelNum": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "不同型号对应的数量"
+        }
+      }
+    },
+    "v1DevicesActivationInfo": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        }
+      }
+    },
+    "v1DevicesBatchInitRespInfo": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "类型"
+        }
+      }
+    },
+    "v1DevicesChangeOrganizationShadowReply": {
+      "type": "object"
+    },
+    "v1DevicesChangeOrganizationShadowRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        }
+      }
+    },
+    "v1DevicesDeleteReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        }
+      }
+    },
+    "v1DevicesDeleteV2Reply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        }
+      }
+    },
+    "v1DevicesHeartbeatReply": {
+      "type": "object"
+    },
+    "v1DevicesHeartbeatRequest": {
+      "type": "object"
+    },
+    "v1DevicesIIUGBatchInitV2Reply": {
+      "type": "object",
+      "properties": {
+        "activationResp": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DevicesBatchInitRespInfo"
+          },
+          "title": "激活响应信息列表"
+        }
+      }
+    },
+    "v1DevicesIIUGBatchInitV2Request": {
+      "type": "object",
+      "properties": {
+        "deviceActivationList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DevicesActivationInfo"
+          },
+          "title": "设备激活信息列表"
+        }
+      }
+    },
+    "v1DevicesIIUGInitGRequest": {
+      "type": "object",
+      "properties": {
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        }
+      }
+    },
+    "v1DevicesIIUGInitReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1DevicesIIUGInitV2Reply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "类型"
+        }
+      }
+    },
+    "v1DevicesIIUGInitV2Request": {
+      "type": "object"
+    },
+    "v1DevicesRecordNumberByTimeReply": {
+      "type": "object",
+      "properties": {
+        "num": {
+          "type": "integer",
+          "format": "int32",
+          "title": "数量"
+        },
+        "modelNum": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "不同型号对应的数量"
+        }
+      }
+    },
+    "v1GetControlVersionResp": {
+      "type": "object",
+      "properties": {
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Instance"
+          },
+          "title": "实例"
+        }
+      },
+      "title": "响应-获取设备管控版本分布"
+    },
+    "v1GetDeviceModelConfListReply": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1GetDeviceModelConfListReplyInfo"
+          },
+          "title": "设备型号配置列表"
+        }
+      }
+    },
+    "v1GetDeviceModelConfListReplyInfo": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "modelDesc": {
+          "type": "string",
+          "title": "设备型号描述"
+        }
+      }
+    },
+    "v1GetDevicesDetailInfoRemoteReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "info": {
+          "$ref": "#/definitions/v1DeviceInfo",
+          "title": "设备信息"
+        },
+        "detail": {
+          "$ref": "#/definitions/v1DetailInfo",
+          "title": "设备详情"
+        }
+      }
+    },
+    "v1GetDevicesDetailInfoShadowReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "info": {
+          "$ref": "#/definitions/v1DeviceInfo",
+          "title": "设备信息"
+        },
+        "detail": {
+          "$ref": "#/definitions/v1DetailInfo",
+          "title": "设备详情"
+        }
+      }
+    },
+    "v1GetDevicesInfoApiReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户ID"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "sex": {
+          "type": "string",
+          "title": "性别"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "companyName": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "schoolName": {
+          "type": "string",
+          "title": "学校名称"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "className": {
+          "type": "string",
+          "title": "班级名称"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "modelDeviceDesc": {
+          "type": "string",
+          "title": "设备型号描述"
+        },
+        "timeLastHeartbeat": {
+          "type": "string",
+          "title": "最后一次心跳时间"
+        },
+        "statusActive": {
+          "type": "string",
+          "title": "激活状态"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "companyType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "企业类型"
+        },
+        "modelDeviceShow": {
+          "type": "string",
+          "title": "设备型号展示"
+        },
+        "modelDeviceImg": {
+          "type": "string",
+          "title": "设备型号图片"
+        }
+      }
+    },
+    "v1GetDevicesInfoByOnionIdResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceInfo"
+          },
+          "title": "设备信息列表"
+        }
+      }
+    },
+    "v1GetDevicesInfoRemoteReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户ID"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "sex": {
+          "type": "string",
+          "title": "性别"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "companyName": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "schoolName": {
+          "type": "string",
+          "title": "学校名称"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "className": {
+          "type": "string",
+          "title": "班级名称"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "modelDeviceDesc": {
+          "type": "string",
+          "title": "设备型号描述"
+        },
+        "timeLastHeartbeat": {
+          "type": "string",
+          "title": "最后一次心跳时间"
+        },
+        "statusActive": {
+          "type": "string",
+          "title": "激活状态"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "companyType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "企业类型"
+        },
+        "modelDeviceShow": {
+          "type": "string",
+          "title": "设备型号展示"
+        },
+        "modelDeviceImg": {
+          "type": "string",
+          "title": "设备型号图片"
+        }
+      }
+    },
+    "v1GetDevicesLtVsReportStatusReply": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "boolean",
+          "title": "是否需要上报位置"
+        },
+        "viewScreen": {
+          "type": "boolean",
+          "title": "是否需要上报屏幕"
+        }
+      }
+    },
+    "v1GetLineOnDevicesByOrganizationReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1GetSystemVersionResp": {
+      "type": "object",
+      "properties": {
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Instance"
+          },
+          "title": "实例"
+        }
+      },
+      "title": "响应-获取设备管控版本分布"
+    },
+    "v1HangZhiUnManagedInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "openId": {
+          "type": "string",
+          "title": "openId"
+        },
+        "hangZhiId": {
+          "type": "string",
+          "title": "航智ID"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        }
+      }
+    },
+    "v1HardWareConfigInfo": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "type": "string",
+          "title": "cpu"
+        },
+        "ram": {
+          "type": "string",
+          "title": "内存"
+        },
+        "memory": {
+          "type": "string",
+          "title": "存储"
+        },
+        "monitor": {
+          "type": "string",
+          "title": "显示器"
+        },
+        "camera": {
+          "type": "string",
+          "title": "摄像头"
+        },
+        "microphone": {
+          "type": "string",
+          "title": "麦克风"
+        },
+        "speaker": {
+          "type": "string",
+          "title": "扬声器"
+        },
+        "battery": {
+          "type": "string",
+          "title": "电池"
+        },
+        "chargingConnector": {
+          "type": "string",
+          "title": "充电接口"
+        },
+        "audioJack": {
+          "type": "string",
+          "title": "耳机接口"
+        },
+        "wifi": {
+          "type": "string",
+          "title": "wifi"
+        },
+        "bluetooth": {
+          "type": "string",
+          "title": "蓝牙"
+        },
+        "operatingSystem": {
+          "type": "string",
+          "title": "操作系统"
+        },
+        "authentication": {
+          "type": "string",
+          "title": "认证"
+        },
+        "standardAccessories": {
+          "type": "string",
+          "title": "标准配件"
+        }
+      }
+    },
+    "v1Instance": {
+      "type": "object",
+      "properties": {
+        "deviceModel": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Stats"
+          },
+          "title": "详细数据"
+        }
+      },
+      "title": "实例"
+    },
+    "v1ListDevicesRemoteReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceInfo"
+          },
+          "title": "设备信息列表"
+        }
+      }
+    },
+    "v1ListDevicesRemoteRequest": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页数量"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "statusActiveArr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "激活状态"
+        },
+        "statusArr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "状态"
+        },
+        "SNIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "设备SNId列表"
+        }
+      }
+    },
+    "v1ListDevicesShadowReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceInfo"
+          },
+          "title": "设备信息列表"
+        }
+      }
+    },
+    "v1ListDevicesShadowRequest": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页数量"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "searchStr": {
+          "type": "string",
+          "title": "搜索字符串"
+        },
+        "statusActiveArr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "激活状态"
+        },
+        "statusArr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "状态"
+        }
+      }
+    },
+    "v1OnionDeviceInfo": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "activateTime": {
+          "type": "string",
+          "title": "设备激活时间"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "deviceModelInfo": {
+          "$ref": "#/definitions/v1DeviceModelInfo",
+          "title": "设备型号信息"
+        }
+      }
+    },
+    "v1QueryDeviceActivationOrganizationInfoResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceActivationOrganizationInfo"
+          },
+          "title": "设备激活组织信息列表"
+        }
+      }
+    },
+    "v1QueryDeviceConfigInfoReply": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceConfigInfo"
+          },
+          "title": "设备配置信息列表"
+        }
+      }
+    },
+    "v1QueryDeviceDeleteRecordReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页数量"
+        },
+        "operator": {
+          "type": "string",
+          "title": "操作人"
+        },
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        }
+      }
+    },
+    "v1QueryDeviceDeleteRecordResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DeviceDeleteRecordItem"
+          },
+          "title": "设备退货记录列表"
+        }
+      }
+    },
+    "v1QueryDeviceInfoByOnionIdReply": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1OnionDeviceInfo"
+          },
+          "title": "设备信息列表"
+        }
+      }
+    },
+    "v1QueryHangZhiUnManagedInfoListReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1HangZhiUnManagedInfo"
+          },
+          "title": "航智解除管控设备信息列表"
+        }
+      }
+    },
+    "v1QueryHangZhiUnManagedInfoListReq": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页数量"
+        }
+      }
+    },
+    "v1QueryModelDeviceReply": {
+      "type": "object",
+      "properties": {
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        }
+      }
+    },
+    "v1QueryModelDeviceReq": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1QueryOrganizationDeviceNumReply": {
+      "type": "object",
+      "properties": {
+        "companyNum": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "企业 id 集合"
+        },
+        "schoolNum": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "学校 id 集合"
+        },
+        "classNum": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "班级 id 集合"
+        }
+      }
+    },
+    "v1QueryOrganizationDeviceNumReq": {
+      "type": "object",
+      "properties": {
+        "companyIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "企业id"
+        },
+        "schoolIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "学校id"
+        },
+        "classIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "班级id"
+        }
+      }
+    },
+    "v1SoftWareConfigInfo": {
+      "type": "object",
+      "properties": {
+        "hasParentalControl": {
+          "type": "boolean",
+          "title": "是否有家长管控"
+        },
+        "learningSystem": {
+          "type": "string",
+          "title": "学习系统"
+        },
+        "hasLearningReport": {
+          "type": "boolean",
+          "title": "是否有学情报告"
+        },
+        "hasTextBookSyncClasses": {
+          "type": "boolean",
+          "title": "是否有教材同步课"
+        },
+        "hasGraduatingGradeFinalReview": {
+          "type": "boolean",
+          "title": "是否有毕业年级总复习"
+        },
+        "hasFindingSimilarExamples": {
+          "type": "boolean",
+          "title": "是否有举一反三变式题"
+        },
+        "hasPreClassReading": {
+          "type": "boolean",
+          "title": "是否有课前预习"
+        },
+        "hasCompetitivePractice": {
+          "type": "boolean",
+          "title": "是否有PK练习"
+        }
+      }
+    },
+    "v1Stats": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "名称"
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "title": "值"
+        }
+      },
+      "title": "统计数据"
+    },
+    "v1UpdateDeviceActivationOrganizationInfoReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deviceBrand": {
+          "type": "string",
+          "title": "设备品牌"
+        },
+        "modelDevice": {
+          "type": "string",
+          "title": "设备型号"
+        },
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "schoolId": {
+          "type": "string",
+          "title": "学校ID"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态"
+        }
+      }
+    },
+    "v1UpdateDeviceActivationOrganizationInfoResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "配置ID"
+        }
+      }
+    },
+    "v1UpdateDevicesLocationReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1UpdateDevicesLocationRequest": {
+      "type": "object",
+      "properties": {
+        "longitude": {
+          "type": "string",
+          "title": "经度"
+        },
+        "latitude": {
+          "type": "string",
+          "title": "纬度"
+        }
+      }
+    },
+    "v1UpdateDevicesReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "ignore": {
+          "type": "boolean",
+          "title": "是否忽略"
+        }
+      }
+    },
+    "v1UpdateDevicesRequest": {
+      "type": "object",
+      "properties": {
+        "MAC": {
+          "type": "string",
+          "title": "MAC"
+        },
+        "modelCPU": {
+          "type": "string",
+          "title": "cpu"
+        },
+        "versionControl": {
+          "type": "string",
+          "title": "管控版本"
+        },
+        "versionBrowser": {
+          "type": "string",
+          "title": "浏览器版本"
+        },
+        "versionSystem": {
+          "type": "string",
+          "title": "系统版本"
+        },
+        "versionAndroid": {
+          "type": "string",
+          "title": "安卓版本"
+        },
+        "RAMSize": {
+          "type": "number",
+          "format": "float",
+          "title": "内存(不会实时更新)"
+        },
+        "DDRSize": {
+          "type": "number",
+          "format": "float",
+          "title": "存储(不会实时更新)"
+        },
+        "DDRSizeUsed": {
+          "type": "number",
+          "format": "float",
+          "title": "已使用存储(不会实时更新)"
+        }
+      }
+    },
+    "v1UpdateDevicesStatusRemoteReply": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "更新数量"
+        }
+      }
+    },
+    "v1UpdateDevicesStatusRemoteRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        },
+        "classId": {
+          "type": "string",
+          "title": "班级ID"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态"
+        }
+      }
+    },
+    "v1UpdateDevicesUserReply": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备SNId"
+        }
+      }
+    },
+    "v1UpdateDevicesUserRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "title": "用户ID"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "sex": {
+          "type": "string",
+          "title": "性别"
+        }
+      }
+    },
+    "v1UpdateHangZhiUnManagedInfoStatusReply": {
+      "type": "object",
+      "properties": {
+        "isSuccess": {
+          "type": "boolean",
+          "title": "是否成功"
+        }
+      }
+    },
+    "v1UpdateHangZhiUnManagedInfoStatusReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        }
+      }
+    }
+  }
+}

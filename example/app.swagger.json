@@ -1,0 +1,1293 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "app/v1/app.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "App"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/devices-policy/api/app/policyOfParent/item": {
+      "post": {
+        "summary": "API调用-查询家长设置应用策略列表--单个查询(压测)",
+        "operationId": "App_GetAppPolicyOfParentItem",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAppPolicyOfParentItemReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1GetAppPolicyOfParentItemRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/api/app/policyOfParent/list": {
+      "get": {
+        "summary": "API调用-查询家长设置应用策略列表(压测)",
+        "operationId": "App_GetAppPolicyOfParentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAppPolicyOfParentListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/api/app/policyOfParent/store": {
+      "post": {
+        "summary": "API调用-家长设置应用策略",
+        "operationId": "App_SetAppPolicyOfParentItem",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SetAppPolicyOfParentItemReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SetAppPolicyOfParentItemRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/api/app/unInstall": {
+      "post": {
+        "summary": "API调用-卸载应用",
+        "operationId": "App_DeviceAppUnInstallApi",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppUnInstallApiReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppUnInstallApiRequest"
+            }
+          },
+          {
+            "name": "SNId",
+            "description": "设备ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/install": {
+      "post": {
+        "summary": "远程调用-安装应用",
+        "operationId": "App_DeviceAppInstallRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppInstallRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppInstallRemoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/list": {
+      "post": {
+        "summary": "远程调用-策略列表(压测)",
+        "operationId": "App_ListAppPolicyRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListRemoteAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ListRemoteAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/policy/bySNIDPackageNames": {
+      "post": {
+        "summary": "远程调用-获取指定设备指定多个包的的策略列表(压测)",
+        "operationId": "App_GetAppPolicyBySNIDPackageNames",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAppPolicyBySNIDPackageNamesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1GetAppPolicyBySNIDPackageNamesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/sync/level/company": {
+      "post": {
+        "summary": "远程调用-企业应用市场同步",
+        "operationId": "App_SyncCompanyLevelAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SyncCompanyLevelAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SyncCompanyLevelAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/sync/level/super": {
+      "post": {
+        "summary": "远程调用-超级管理员应用市场同步",
+        "operationId": "App_SyncSuperLevelAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SyncSuperLevelAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SyncSuperLevelAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/sync/super": {
+      "post": {
+        "summary": "远程调用-应用市场同步",
+        "operationId": "App_SyncSuperAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SyncSuperAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SyncSuperAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/unInstall": {
+      "post": {
+        "summary": "远程调用-卸载应用",
+        "operationId": "App_DeviceAppUnInstallRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppUnInstallRemoteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeviceAppUnInstallRemoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/remote/app/update": {
+      "put": {
+        "summary": "远程调用-更新策略",
+        "operationId": "App_UpdateAppPolicyRemote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/shadow/app/clearAppPolicyOfParent": {
+      "put": {
+        "summary": "后台调用-清除家长设置的应用策略",
+        "operationId": "App_ClearAppPolicyOfParent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClearAppPolicyOfParentReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClearAppPolicyOfParentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/shadow/app/create": {
+      "post": {
+        "summary": "后台调用-创建策略",
+        "operationId": "App_CreateAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreateAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/shadow/app/delete": {
+      "delete": {
+        "summary": "后台调用-策略删除",
+        "operationId": "App_DeleteAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "level",
+            "description": "组织level",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "levelId",
+            "description": "组织Id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "appId",
+            "description": "应用ID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "updatedBy",
+            "description": "更新人",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/shadow/app/list": {
+      "post": {
+        "summary": "后台调用-策略列表",
+        "operationId": "App_ListAppPolicyShadow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListShadowAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ListShadowAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/devices-policy/shadow/app/update": {
+      "put": {
+        "summary": "后台调用-更新策略",
+        "operationId": "App_UpdateAppPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAppPolicyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAppPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "App"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AppUseTimeManagerTimeRanges": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        },
+        "start": {
+          "type": "string",
+          "title": "开始时间"
+        },
+        "end": {
+          "type": "string",
+          "title": "结束时间"
+        }
+      }
+    },
+    "UpdateAppPolicyRequestUpdateInfo": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "enableAppRelease": {
+          "type": "boolean",
+          "title": "是否应用放行"
+        },
+        "enableWebviewWhite": {
+          "type": "boolean",
+          "title": "是否开webview白名单"
+        },
+        "enableActivityBlack": {
+          "type": "boolean",
+          "title": "是否开启activity黑名单"
+        },
+        "enableShowDesktop": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        },
+        "useTimeManager": {
+          "$ref": "#/definitions/v1AppUseTimeManager",
+          "title": "使用时间管理"
+        },
+        "disableDesktopShow": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        }
+      }
+    },
+    "appv1GetAppPolicyOfParentItem": {
+      "type": "object",
+      "properties": {
+        "packageName": {
+          "type": "string",
+          "title": "包名"
+        },
+        "iconUrl": {
+          "type": "string",
+          "title": "图标"
+        },
+        "appName": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "appSize": {
+          "type": "number",
+          "format": "float",
+          "title": "应用大小"
+        },
+        "description": {
+          "type": "string",
+          "title": "应用描述"
+        },
+        "useType": {
+          "type": "string",
+          "title": "时长类型"
+        },
+        "timeLength": {
+          "type": "integer",
+          "format": "int32",
+          "title": "时长"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AppPolicyInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "ID"
+        },
+        "level": {
+          "type": "string",
+          "title": "组织level"
+        },
+        "levelId": {
+          "type": "string",
+          "title": "组织Id"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "appType": {
+          "type": "string",
+          "title": "应用类型"
+        },
+        "appName": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "packageName": {
+          "type": "string",
+          "title": "应用包名"
+        },
+        "enableAppRelease": {
+          "type": "boolean",
+          "title": "是否应用放行"
+        },
+        "enableWebviewWhite": {
+          "type": "boolean",
+          "title": "是否开webview白名单"
+        },
+        "enableActivityBlack": {
+          "type": "boolean",
+          "title": "是否开启activity黑名单"
+        },
+        "enableShowDesktop": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        },
+        "useTimeManager": {
+          "$ref": "#/definitions/v1AppUseTimeManager",
+          "title": "使用时间管理"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "disableDesktopShow": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        }
+      }
+    },
+    "v1AppUseTimeManager": {
+      "type": "object",
+      "properties": {
+        "useType": {
+          "type": "string",
+          "title": "类型"
+        },
+        "timeRanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/AppUseTimeManagerTimeRanges"
+          },
+          "title": "时间范围"
+        },
+        "timeLength": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ClearAppPolicyOfParentReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        }
+      }
+    },
+    "v1ClearAppPolicyOfParentRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "isClearAll": {
+          "type": "boolean",
+          "title": "是否清楚全部"
+        },
+        "packageName": {
+          "type": "string",
+          "title": "包名"
+        }
+      }
+    },
+    "v1CreateAppPolicyReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        }
+      }
+    },
+    "v1CreateAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "title": "组织level"
+        },
+        "levelId": {
+          "type": "string",
+          "title": "组织Id"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "enableAppRelease": {
+          "type": "boolean",
+          "title": "是否应用放行"
+        },
+        "enableWebviewWhite": {
+          "type": "boolean",
+          "title": "是否开webview白名单"
+        },
+        "enableActivityBlack": {
+          "type": "boolean",
+          "title": "是否开启activity黑名单"
+        },
+        "enableShowDesktop": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        },
+        "useTimeManager": {
+          "$ref": "#/definitions/v1AppUseTimeManager",
+          "title": "使用时间管理"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "disableDesktopShow": {
+          "type": "boolean",
+          "title": "禁止显示桌面:true 不显示,false 显示"
+        }
+      }
+    },
+    "v1DeleteAppPolicyReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        }
+      }
+    },
+    "v1DeviceAppInstallRemoteReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id"
+        }
+      }
+    },
+    "v1DeviceAppInstallRemoteRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        }
+      }
+    },
+    "v1DeviceAppUnInstallApiReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "title": "状态"
+        }
+      }
+    },
+    "v1DeviceAppUnInstallApiRequest": {
+      "type": "object",
+      "properties": {
+        "packageName": {
+          "type": "string",
+          "title": "包名"
+        }
+      }
+    },
+    "v1DeviceAppUnInstallRemoteReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        }
+      }
+    },
+    "v1DeviceAppUnInstallRemoteRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        }
+      }
+    },
+    "v1GetAppPolicyBySNIDPackageNamesReply": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AppPolicyInfo"
+          },
+          "title": "列表"
+        }
+      }
+    },
+    "v1GetAppPolicyBySNIDPackageNamesRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "packageNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "包名集合"
+        }
+      }
+    },
+    "v1GetAppPolicyOfParentItemReply": {
+      "type": "object",
+      "properties": {
+        "packageName": {
+          "type": "string",
+          "title": "应用包名"
+        },
+        "iconUrl": {
+          "type": "string",
+          "title": "应用图标"
+        },
+        "appName": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "appSize": {
+          "type": "number",
+          "format": "float",
+          "title": "应用大小"
+        },
+        "description": {
+          "type": "string",
+          "title": "应用描述"
+        },
+        "useType": {
+          "type": "string",
+          "title": "时长类型"
+        },
+        "timeLength": {
+          "type": "integer",
+          "format": "int32",
+          "title": "时长"
+        },
+        "timeRangeList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1TimeRange"
+          },
+          "title": "使用时间管理"
+        },
+        "firstLevelTabName": {
+          "type": "string",
+          "title": "一级标签名称"
+        },
+        "secondLevelTabName": {
+          "type": "string",
+          "title": "二级标签名称"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        }
+      }
+    },
+    "v1GetAppPolicyOfParentItemRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "packageName": {
+          "type": "string",
+          "title": "包名"
+        }
+      }
+    },
+    "v1GetAppPolicyOfParentListReply": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/appv1GetAppPolicyOfParentItem"
+          }
+        }
+      }
+    },
+    "v1ListRemoteAppPolicyReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AppPolicyInfo"
+          },
+          "title": "列表"
+        }
+      }
+    },
+    "v1ListRemoteAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "isPage": {
+          "type": "boolean",
+          "title": "是否分页"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页数(最大1000)"
+        },
+        "level": {
+          "type": "string",
+          "title": "组织level"
+        },
+        "levelId": {
+          "type": "string",
+          "title": "组织Id"
+        },
+        "appType": {
+          "type": "string",
+          "title": "应用类型"
+        }
+      }
+    },
+    "v1ListShadowAppPolicyReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AppPolicyInfo"
+          },
+          "title": "列表"
+        }
+      }
+    },
+    "v1ListShadowAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "title": "页数(最大1000)"
+        },
+        "level": {
+          "type": "string",
+          "title": "组织level"
+        },
+        "levelId": {
+          "type": "string",
+          "title": "组织Id"
+        },
+        "appType": {
+          "type": "string",
+          "title": "应用类型"
+        },
+        "packageName": {
+          "type": "string",
+          "title": "包名"
+        },
+        "searchStr": {
+          "type": "string",
+          "title": "快捷搜索"
+        }
+      }
+    },
+    "v1SetAppPolicyOfParentItemReply": {
+      "type": "object"
+    },
+    "v1SetAppPolicyOfParentItemRequest": {
+      "type": "object",
+      "properties": {
+        "SNId": {
+          "type": "string",
+          "title": "设备ID"
+        },
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        },
+        "useTimeManager": {
+          "$ref": "#/definitions/v1AppUseTimeManager",
+          "title": "使用时间管理"
+        }
+      }
+    },
+    "v1SyncCompanyLevelAppPolicyReply": {
+      "type": "object"
+    },
+    "v1SyncCompanyLevelAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "companyId": {
+          "type": "string",
+          "title": "企业ID"
+        }
+      }
+    },
+    "v1SyncSuperAppPolicyReply": {
+      "type": "object"
+    },
+    "v1SyncSuperAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "title": "应用ID"
+        }
+      }
+    },
+    "v1SyncSuperLevelAppPolicyReply": {
+      "type": "object"
+    },
+    "v1SyncSuperLevelAppPolicyRequest": {
+      "type": "object"
+    },
+    "v1TimeRange": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "状态"
+        },
+        "start": {
+          "type": "string",
+          "title": "开始时间"
+        },
+        "end": {
+          "type": "string",
+          "title": "结束时间"
+        }
+      }
+    },
+    "v1UpdateAppPolicyReply": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "数量"
+        }
+      }
+    },
+    "v1UpdateAppPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "title": "组织level"
+        },
+        "levelId": {
+          "type": "string",
+          "title": "组织Id"
+        },
+        "updatedBy": {
+          "type": "string",
+          "title": "更新人"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/UpdateAppPolicyRequestUpdateInfo"
+          },
+          "title": "列表"
+        }
+      }
+    }
+  }
+}
