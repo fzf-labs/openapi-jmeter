@@ -4,7 +4,6 @@ go 1.20
 
 require (
 	github.com/getkin/kin-openapi v0.128.0
-	github.com/spf13/cast v1.7.0
 	github.com/spf13/cobra v1.8.1
 	golang.org/x/sync v0.7.0
 	gopkg.in/yaml.v3 v3.0.1
