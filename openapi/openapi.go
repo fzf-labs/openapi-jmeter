@@ -2,6 +2,7 @@ package openapi
 
 import (
 	"fmt"
+
 	"github.com/fzf-labs/openapi-jmeter/config"
 )
 

@@ -10,8 +10,9 @@ type API struct {
 	HTTPBody    HTTPBody          `json:"httpBody"`    // http请求体
 }
 type HTTPKeyAndType struct {
-	Key  string `json:"key"`  // 键
-	Type string `json:"type"` // 类型
+	Key   string `json:"key"`   // 键
+	Value string `json:"value"` // 值
+	Type  string `json:"type"`  // 类型
 }
 
 type HTTPParams struct {

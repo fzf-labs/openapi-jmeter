@@ -55,7 +55,6 @@ type ThreadGroup struct {
 type CsvDataSetConfig struct {
 	FileNamePath    string `yaml:"fileNamePath" json:"fileNamePath"`       // CSV 文件路径
 	FileEncoding    string `yaml:"fileEncoding" json:"fileEncoding"`       // 文件编码格式
-	VariableNames   string `yaml:"variableNames" json:"variableNames"`     // 变量名列表
 	IgnoreFirstLine bool   `yaml:"ignoreFirstLine" json:"ignoreFirstLine"` // 是否忽略第一行
 	Delimiter       string `yaml:"delimiter" json:"delimiter"`             // 分隔符
 	AllowQuotedData bool   `yaml:"allowQuotedData" json:"allowQuotedData"` // 是否允许带引号的数据

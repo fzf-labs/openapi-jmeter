@@ -127,8 +127,9 @@ func (o *OpenAPI2) extractHeaders(operation *openapi2.Operation) []*HTTPKeyAndTy
 	for _, param := range operation.Parameters {
 		if param.In == "header" {
 			headers = append(headers, &HTTPKeyAndType{
-				Key:  param.Name,
-				Type: param.Type.Slice()[0],
+				Key:   param.Name,
+				Value: "${" + param.Name + "}",
+				Type:  param.Type.Slice()[0],
 			})
 		}
 	}
@@ -145,13 +146,15 @@ func (o *OpenAPI2) extractParams(operation *openapi2.Operation) HTTPParams {
 		switch param.In {
 		case "query":
 			params.Query = append(params.Query, &HTTPKeyAndType{
-				Key:  param.Name,
-				Type: param.Type.Slice()[0],
+				Key:   param.Name,
+				Value: "${" + param.Name + "}",
+				Type:  param.Type.Slice()[0],
 			})
 		case "path":
 			params.Path = append(params.Path, &HTTPKeyAndType{
-				Key:  param.Name,
-				Type: param.Type.Slice()[0],
+				Key:   param.Name,
+				Value: "${" + param.Name + "}",
+				Type:  param.Type.Slice()[0],
 			})
 		}
 	}
@@ -187,8 +190,9 @@ func (o *OpenAPI2) extractBody(swagger *openapi2.T, operation *openapi2.Operatio
 func (o *OpenAPI2) processFormData(param *openapi2.Parameter, body *HTTPBody) {
 	body.ContentType = "multipart/form-data"
 	body.FormData = append(body.FormData, &HTTPKeyAndType{
-		Key:  param.Name,
-		Type: param.Type.Slice()[0],
+		Key:   param.Name,
+		Value: "${" + param.Name + "}",
+		Type:  param.Type.Slice()[0],
 	})
 }
 
@@ -291,7 +295,7 @@ func (o *OpenAPI2) processSchema(swagger *openapi2.T, schema *openapi2.SchemaRef
 							return nil, fmt.Errorf("failed to process referenced field %s: %w", fieldName, err)
 						}
 						if refSchema.Value != nil && refSchema.Value.Type != nil && len(refSchema.Value.Type.Slice()) > 0 {
-								fieldType = refSchema.Value.Type.Slice()[0]
+							fieldType = refSchema.Value.Type.Slice()[0]
 						}
 					}
 				}
@@ -301,7 +305,7 @@ func (o *OpenAPI2) processSchema(swagger *openapi2.T, schema *openapi2.SchemaRef
 					return nil, fmt.Errorf("failed to process field %s: %w", fieldName, err)
 				}
 				if fieldSchema.Value != nil && fieldSchema.Value.Type != nil && len(fieldSchema.Value.Type.Slice()) > 0 {
-						fieldType = fieldSchema.Value.Type.Slice()[0]
+					fieldType = fieldSchema.Value.Type.Slice()[0]
 				}
 			}
 
@@ -310,8 +314,9 @@ func (o *OpenAPI2) processSchema(swagger *openapi2.T, schema *openapi2.SchemaRef
 			// 只记录基本类型的字段
 			if fieldType != "" && fieldType != "array" && fieldType != "object" {
 				body.JSON.Params = append(body.JSON.Params, &HTTPKeyAndType{
-					Key:  currentPath,
-					Type: fieldType,
+					Key:   currentPath,
+					Value: "${" + currentPath + "}",
+					Type:  fieldType,
 				})
 			}
 		}
@@ -324,9 +329,10 @@ func (o *OpenAPI2) processSchema(swagger *openapi2.T, schema *openapi2.SchemaRef
 		}
 		// 基本类型直接添加到 Params
 		body.JSON.Params = append(body.JSON.Params, &HTTPKeyAndType{
-			Key:  parentPath,
-			Type: schemaType,
+			Key:   parentPath,
+			Value: "${" + parentPath + "}",
+			Type:  schemaType,
 		})
-		return "%" + parentPath, nil
+		return "${" + parentPath + "}", nil
 	}
 }

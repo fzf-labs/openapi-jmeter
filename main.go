@@ -3,10 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+
 	"github.com/fzf-labs/openapi-jmeter/config"
+	"github.com/fzf-labs/openapi-jmeter/jmeter"
 	"github.com/fzf-labs/openapi-jmeter/openapi"
 	"github.com/spf13/cobra"
-	"log"
 )
 
 var CmdJmeter = &cobra.Command{
@@ -36,6 +38,10 @@ func run(_ *cobra.Command, _ []string) {
 	}
 	b, _ := json.Marshal(apis)
 	fmt.Println(string(b))
+	err = jmeter.NewJMeter(c, apis).GenerateJMX()
+	if err != nil {
+		log.Fatalf("Failed to generate JMX: %v", err)
+	}
 }
 
 func main() {

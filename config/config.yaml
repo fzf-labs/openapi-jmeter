@@ -2,7 +2,7 @@ jmeter:
   openapiVersion: 2.0  # 2.0 表示 OpenAPI 2.0，3.0 表示 OpenAPI 3.0
   inputPath: "./example"  # OpenAPI 文件路径
   outputPath: "./example" # JMeter 输出文件路径
-  keyword: ""  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
+  keyword: "压测"  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
 # Jmeter 基础配置
 # HTTP 请求配置
 httpRequest:
@@ -24,7 +24,7 @@ httpRequest:
 # 线程组配置
 threadGroup:
   actionToBeTakenAfterASamplerError: "continue"  # continue, startnextloop, stopthread, stoptest
-  numThreads: 10                                 # 线程数量
+  numThreads: 100                                 # 线程数量
   rampTime: 30                                   # 线程启动时间(秒)
   loopCount: -1                                  # -1 表示永远循环
   sameUserOnEachIteration: false                 # 每次迭代使用相同用户
@@ -36,7 +36,6 @@ threadGroup:
 csvDataSetConfig:
   fileNamePath: "./example" # CSV 文件路径
   fileEncoding: "UTF-8" # 文件编码格式
-  variableNames: "username,password,email" # 变量名列表
   ignoreFirstLine: true # 是否忽略第一行
   delimiter: "," # 分隔符
   allowQuotedData: true # 是否允许带引号的数据
