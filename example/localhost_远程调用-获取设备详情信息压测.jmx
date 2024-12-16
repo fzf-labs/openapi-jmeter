@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.2">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="{{.API.HTTPName}}" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="远程调用-获取设备详情信息压测" enabled="true">
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -10,72 +10,77 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="{{.API.HTTPDomain}}" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">{{.Config.ThreadGroup.ActionToBeTakenAfterASamplerError}}</stringProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="localhost" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <intProp name="LoopController.loops">{{.Config.ThreadGroup.LoopCount}}</intProp>
+          <intProp name="LoopController.loops">-1</intProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">{{.Config.ThreadGroup.NumThreads}}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">{{.Config.ThreadGroup.RampTime}}</stringProp>
-        <boolProp name="ThreadGroup.scheduler">{{.Config.ThreadGroup.SpecifyThreadLifetime}}</boolProp>
-        <stringProp name="ThreadGroup.duration">{{.Config.ThreadGroup.Duration}}</stringProp>
-        <stringProp name="ThreadGroup.delay">{{.Config.ThreadGroup.StartupDelay}}</stringProp>
-        <boolProp name="ThreadGroup.delayedStart">{{.Config.ThreadGroup.DelayThreadCreationUntilNeeded}}</boolProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">{{.Config.ThreadGroup.SameUserOnEachIteration}}</boolProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.delayedStart">false</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{.API.HTTPName}}" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="远程调用-获取设备详情信息压测" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{{.API.HTTPBody.JSON.JSONStr}}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">{{.API.HTTPDomain}}</stringProp>
-          <stringProp name="HTTPSampler.protocol">{{.Config.HttpRequest.Protocol}}</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-          <stringProp name="HTTPSampler.path">{{.API.HTTPPath}}</stringProp>
-          <stringProp name="HTTPSampler.method">{{.API.HTTPMethod}}</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">{{.Config.HttpRequest.FollowRedirects}}</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">{{.Config.HttpRequest.RedirectAutomatically}}</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">{{.Config.HttpRequest.UseKeepAlive}}</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">{{.Config.HttpRequest.UseMultipartFormData}}</boolProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">{{.Config.HttpRequest.BrowserCompatibleHeaders}}</boolProp>
+          <stringProp name="HTTPSampler.path">/devices-management/remote/devices/detail</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
             <collectionProp name="HeaderManager.headers">
-              {{range .Config.HttpRequest.HTTPDefaultHeaders}}
+              
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">{{.Key}}</stringProp>
-                <stringProp name="Header.value">{{.Value}}</stringProp>
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
-              {{end}}
-              {{range .API.HTTPHeaders}}
+              
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">{{.Key}}</stringProp>
-                <stringProp name="Header.value">{{.Value}}</stringProp>
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
-              {{end}}
+              
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">JMeter</stringProp>
+              </elementProp>
+              
+              
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
 
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
-          <stringProp name="delimiter">{{.Config.CsvDataSetConfig.Delimiter}}</stringProp>
-          <stringProp name="fileEncoding">{{.Config.CsvDataSetConfig.FileEncoding}}</stringProp>
-          <stringProp name="filename">{{.Config.CsvDataSetConfig.FileNamePath}}</stringProp>
-          <boolProp name="ignoreFirstLine">{{.Config.CsvDataSetConfig.IgnoreFirstLine}}</boolProp>
-          <boolProp name="quotedData">{{.Config.CsvDataSetConfig.AllowQuotedData}}</boolProp>
-          <boolProp name="recycle">{{.Config.CsvDataSetConfig.Recycle}}</boolProp>
-          <stringProp name="shareMode">{{.Config.CsvDataSetConfig.ShareMode}}</stringProp>
-          <boolProp name="stopThread">{{.Config.CsvDataSetConfig.StopThread}}</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">./example</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
         </CSVDataSet>
         <hashTree/>
 
@@ -84,52 +89,52 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="influxdbMetricsSender" elementType="Argument">
                 <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.InfluxdbMetricsSender}}</stringProp>
+                <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="influxdbUrl" elementType="Argument">
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.InfluxdbUrl}}</stringProp>
+                <stringProp name="Argument.value">http://localhost:8086/api/v2/write</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
                 <stringProp name="Argument.name">application</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.Application}}</stringProp>
+                <stringProp name="Argument.value">MyTestApp</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="measurement" elementType="Argument">
                 <stringProp name="Argument.name">measurement</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.Measurement}}</stringProp>
+                <stringProp name="Argument.value">jmeter</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="summaryOnly" elementType="Argument">
                 <stringProp name="Argument.name">summaryOnly</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.SummaryOnly}}</stringProp>
+                <stringProp name="Argument.value">false</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="samplersRegex" elementType="Argument">
                 <stringProp name="Argument.name">samplersRegex</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.SamplersRegex}}</stringProp>
+                <stringProp name="Argument.value">.*</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="percentiles" elementType="Argument">
                 <stringProp name="Argument.name">percentiles</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.Percentiles}}</stringProp>
+                <stringProp name="Argument.value">90;95;99</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="testTitle" elementType="Argument">
                 <stringProp name="Argument.name">testTitle</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.TestTitle}}</stringProp>
+                <stringProp name="Argument.value">API Performance Test</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="eventTags" elementType="Argument">
                 <stringProp name="Argument.name">eventTags</stringProp>
-                <stringProp name="Argument.value">{{.Config.BackendListener.Influxdb.EventTags}}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="classname">{{.Config.BackendListener.BackendListenerImplementation}}</stringProp>
+          <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
         </BackendListener>
         <hashTree/>
 
@@ -167,7 +172,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">{{.Config.ViewResultsTree.FileNamePath}}</stringProp>
+          <stringProp name="filename">./example</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
