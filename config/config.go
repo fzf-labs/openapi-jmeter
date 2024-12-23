@@ -20,6 +20,7 @@ type Jmeter struct {
 	OpenapiVersion string `yaml:"openapiVersion" json:"openapiVersion"` // OpenAPI 版本
 	InputPath      string `yaml:"inputPath" json:"inputPath"`           // OpenAPI 路径
 	OutputPath     string `yaml:"outputPath" json:"outputPath"`         // JMeter 输出文件路径
+	OutputMode     string `yaml:"outputMode" json:"outputMode"`         // 文件输出模式，overwrite 表示覆盖，skip 表示跳过
 	Keyword        string `yaml:"keyword" json:"keyword"`               // 关键字过滤
 	Suffix         string `yaml:"suffix" json:"suffix"`                 // OpenAPI 文件后缀
 }

@@ -1,7 +1,8 @@
 jmeter:
   openapiVersion: 3.0  # 2.0 表示 OpenAPI 2.0，3.0 表示 OpenAPI 3.0
   inputPath: "./example"  # OpenAPI 文件路径
-  outputPath: "./example/jmx" # JMeter 输出文件路径
+  outputPath: "./example/jmx" # JMeter 输出文件路
+  outputMode: "skip" # 文件输出模式，overwrite 表示覆盖，skip 表示跳过
   keyword: ""  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
   suffix: ".openapi.yaml" # OpenAPI 文件后缀
 # Jmeter 基础配置

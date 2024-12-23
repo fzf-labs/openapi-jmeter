@@ -1,0 +1,33 @@
+# Go 相关
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# 输出目录
+bin/
+dist/
+build/
+example/jmx/
+
+# IDE 配置
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+.env
+
+# 项目特定
+*.log
+/vendor/
+/tmp/
+coverage.txt 

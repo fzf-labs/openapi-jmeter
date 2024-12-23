@@ -6,6 +6,12 @@ import (
 	"strings"
 )
 
+// IsFileExist 判断文件是否存在
+func IsFileExist(filePath string) bool {
+	_, err := os.Stat(filePath)
+	return err == nil
+}
+
 // ReadDirFilesWithSuffix 遍历指定目录下的指定后缀文件
 func ReadDirFilesWithSuffix(root, suffix string) ([]string, error) {
 	var files []string

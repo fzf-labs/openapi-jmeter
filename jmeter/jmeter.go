@@ -102,9 +102,9 @@ func (j *JMeter) GenerateJMX() error {
 			if err := j.generateCSV(data); err != nil {
 				return fmt.Errorf("生成CSV文件失败: %v", err)
 			}
-			// 生成viewResultsTree文件
-			if err := j.generateViewResultsTree(data); err != nil {
-				return fmt.Errorf("生成ViewResultsTree文件失败: %v", err)
+			// 生成result文件
+			if err := j.generateResult(data); err != nil {
+				return fmt.Errorf("生成result文件失败: %v", err)
 			}
 			return nil
 		})
@@ -129,7 +129,12 @@ func (j *JMeter) generateJMX(data *JMXTemplateData) error {
 	if err := tmpl.Execute(&buf, data); err != nil {
 		return fmt.Errorf("渲染模板失败: %v", err)
 	}
-	// 加锁保护文件写入
+	// 如果输出模式为skip且文件存在则跳过
+	if j.Config.Jmeter.OutputMode == "skip" && utils.IsFileExist(filePath) {
+		fmt.Printf("JMX文件已存在: %s\n", filePath)
+		return nil
+	}
+	// 写入JMX文件
 	err = utils.WriteContentCover(filePath, buf.String())
 	if err != nil {
 		return fmt.Errorf("写入JMX文件失败: %v", err)
@@ -150,6 +155,11 @@ func (j *JMeter) generateCSV(data *JMXTemplateData) error {
 	// 写入表头
 	csvContent.WriteString(strings.Join(data.CSVVariableNamesParams, ","))
 	csvContent.WriteString("\n")
+	// 如果输出模式为skip且文件存在则跳过
+	if j.Config.Jmeter.OutputMode == "skip" && utils.IsFileExist(csvFilePath) {
+		fmt.Printf("CSV文件已存在: %s\n", csvFilePath)
+		return nil
+	}
 	// 写入文件
 	err := utils.WriteContentCover(csvFilePath, csvContent.String())
 	if err != nil {
@@ -158,17 +168,22 @@ func (j *JMeter) generateCSV(data *JMXTemplateData) error {
 	return nil
 }
 
-// generateViewResultsTree 生成viewResultsTree文件
-func (j *JMeter) generateViewResultsTree(data *JMXTemplateData) error {
+// generateResult 生成result文件
+func (j *JMeter) generateResult(data *JMXTemplateData) error {
 	if !j.Config.ViewResultsTree.Enable {
 		return nil
 	}
-	// 生成viewResultsTree文件名
+	// 生成result文件名
 	filePath := filepath.Join(j.Config.Jmeter.OutputPath, data.ViewResultsTreeFileName)
-	// 生成viewResultsTree文件
+	// 如果输出模式为skip且文件存在则跳过
+	if j.Config.Jmeter.OutputMode == "skip" && utils.IsFileExist(filePath) {
+		fmt.Printf("Result文件已存在: %s\n", filePath)
+		return nil
+	}
+	// 生成result文件
 	err := utils.WriteContentCover(filePath, "")
 	if err != nil {
-		return fmt.Errorf("创建ViewResultsTree文件失败: %v", err)
+		return fmt.Errorf("创建Result文件失败: %v", err)
 	}
 	return nil
 }

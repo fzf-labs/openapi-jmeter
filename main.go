@@ -25,19 +25,26 @@ func init() {
 }
 
 func run(_ *cobra.Command, _ []string) {
+	log.Println("Start generate jmeter script")
+	// 读取配置文件
 	c, err := config.NewConfig(conf)
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
+	log.Println("Load config success")
+	// 获取OpenAPI文件
 	apis, err := openapi.NewOpenAPI(c).Run()
 	if err != nil {
 		log.Fatalf("Failed to load OpenAPI: %v", err)
 		return
 	}
+	log.Println("Get OpenAPI file success")
+	// 生成JMeter脚本
 	err = jmeter.NewJMeter(c, apis).GenerateJMX()
 	if err != nil {
 		log.Fatalf("Failed to generate JMX: %v", err)
 	}
+	log.Println("Generate JMX success")
 }
 
 func main() {
