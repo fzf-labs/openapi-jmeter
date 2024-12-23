@@ -1,8 +1,9 @@
 jmeter:
-  openapiVersion: 2.0  # 2.0 表示 OpenAPI 2.0，3.0 表示 OpenAPI 3.0
+  openapiVersion: 3.0  # 2.0 表示 OpenAPI 2.0，3.0 表示 OpenAPI 3.0
   inputPath: "./example"  # OpenAPI 文件路径
-  outputPath: "./example" # JMeter 输出文件路径
-  keyword: "压测"  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
+  outputPath: "./example/jmx" # JMeter 输出文件路径
+  keyword: ""  # 需要生成测试用例的接口名称关键字 留空表示不过滤，全部生成。
+  suffix: ".openapi.yaml" # OpenAPI 文件后缀
 # Jmeter 基础配置
 # HTTP 请求配置
 httpRequest:
@@ -25,7 +26,7 @@ httpRequest:
 threadGroup:
   actionToBeTakenAfterASamplerError: "continue"  # continue, startnextloop, stopthread, stoptest
   numThreads: 100                                 # 线程数量
-  rampTime: 30                                   # 线程启动时间(秒)
+  rampTime: 20                                   # 线程启动时间(秒)
   loopCount: -1                                  # -1 表示永远循环
   sameUserOnEachIteration: false                 # 每次迭代使用相同用户
   delayThreadCreationUntilNeeded: false          # 延迟线程创建直到需要
@@ -34,16 +35,17 @@ threadGroup:
   startupDelay: 0                                # 启动延迟(秒)
 # CSV 数据集配置
 csvDataSetConfig:
-  fileNamePath: "./example" # CSV 文件路径
+  fileNamePrefix: "./example" # 文件路径前缀
   fileEncoding: "UTF-8" # 文件编码格式
   ignoreFirstLine: true # 是否忽略第一行
   delimiter: "," # 分隔符
-  allowQuotedData: true # 是否允许带引号的数据
+  allowQuotedData: false # 是否允许带引号的数据
   recycle: true # 是否循环使用数据
   stopThread: false # 数据用完时是否停止线程
   shareMode: "shareMode.all"  # shareMode.all, shareMode.group, shareMode.thread
 # 后端监听器配置
 backendListener:
+  enable: true # 是否启用后端监听器
   backendListenerImplementation: "org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient" # 后端监听器实现
   asyncQueueSize: 5000 # 异步队列大小 
   # Graphite 配置
@@ -75,5 +77,6 @@ backendListener:
     eventTags: "" # 事件标签
 # 查看结果树配置
 viewResultsTree:
-  fileNamePath: "./example" # 文件路径
+  enable: true # 是否启用查看结果树
+  fileNamePrefix: "./example" # 文件路径前缀
   logDisplayOnly: "false" # 仅显示日志  

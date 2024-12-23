@@ -1,8 +1,6 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
 
 	"github.com/fzf-labs/openapi-jmeter/config"
@@ -36,8 +34,6 @@ func run(_ *cobra.Command, _ []string) {
 		log.Fatalf("Failed to load OpenAPI: %v", err)
 		return
 	}
-	b, _ := json.Marshal(apis)
-	fmt.Println(string(b))
 	err = jmeter.NewJMeter(c, apis).GenerateJMX()
 	if err != nil {
 		log.Fatalf("Failed to generate JMX: %v", err)

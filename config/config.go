@@ -21,6 +21,7 @@ type Jmeter struct {
 	InputPath      string `yaml:"inputPath" json:"inputPath"`           // OpenAPI 路径
 	OutputPath     string `yaml:"outputPath" json:"outputPath"`         // JMeter 输出文件路径
 	Keyword        string `yaml:"keyword" json:"keyword"`               // 关键字过滤
+	Suffix         string `yaml:"suffix" json:"suffix"`                 // OpenAPI 文件后缀
 }
 
 type HttpRequest struct {
@@ -53,7 +54,7 @@ type ThreadGroup struct {
 }
 
 type CsvDataSetConfig struct {
-	FileNamePath    string `yaml:"fileNamePath" json:"fileNamePath"`       // CSV 文件路径
+	FileNamePrefix  string `yaml:"fileNamePrefix" json:"fileNamePrefix"`   // 文件路径前缀
 	FileEncoding    string `yaml:"fileEncoding" json:"fileEncoding"`       // 文件编码格式
 	IgnoreFirstLine bool   `yaml:"ignoreFirstLine" json:"ignoreFirstLine"` // 是否忽略第一行
 	Delimiter       string `yaml:"delimiter" json:"delimiter"`             // 分隔符
@@ -64,6 +65,7 @@ type CsvDataSetConfig struct {
 }
 
 type BackendListener struct {
+	Enable                        bool        `yaml:"enable" json:"enable"`                                               // 是否启用后端监听器
 	BackendListenerImplementation string      `yaml:"backendListenerImplementation" json:"backendListenerImplementation"` // 后端监听器实现类
 	AsyncQueueSize                int         `yaml:"asyncQueueSize" json:"asyncQueueSize"`                               // 异步队列大小
 	Graphite                      Graphite    `yaml:"graphite" json:"graphite"`                                           // Graphite 配置
@@ -102,7 +104,8 @@ type Influxdb struct {
 }
 
 type ViewResultsTree struct {
-	FileNamePath   string `yaml:"fileNamePath" json:"fileNamePath"`     // 结果文件路径
+	Enable         bool   `yaml:"enable" json:"enable"`                 // 是否启用查看结果树
+	FileNamePrefix string `yaml:"fileNamePrefix" json:"fileNamePrefix"` // 文件路径前缀
 	LogDisplayOnly string `yaml:"logDisplayOnly" json:"logDisplayOnly"` // 仅显示日志
 }
 
